@@ -98,7 +98,7 @@ def main(_):
   # Define loss and optimizer
   y_ = tf.placeholder(tf.float32, [None, 10])
 
-
+  #Create Model
   cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(y_conv, y_))
   train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
   correct_prediction = tf.equal(tf.argmax(y_conv,1), tf.argmax(y_,1))
@@ -107,7 +107,8 @@ def main(_):
 
   batchSize = 50;
   epochs    = 20000;
-
+  
+  #Train
   for i in range(epochs):
     batch = mnist.train.next_batch(batchSize)
     if i%100 == 0:
